@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject projectile;
+    [SerializeField] private GameObject projectile;
     GameObject shipGun;
     public float speed = 5.0f;
     Rigidbody2D rb;

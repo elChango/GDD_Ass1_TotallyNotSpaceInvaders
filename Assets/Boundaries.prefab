@@ -155,3 +155,4 @@ MonoBehaviour:
   spwanRate: 2
   enemies:
   - {fileID: 5108055057623093048, guid: 1fbb5dfa8304c50438e994f13e92f100, type: 3}
+  - {fileID: 5108055057623093048, guid: 87c22d8ee871f436180c2aba8188a515, type: 3}

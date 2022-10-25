@@ -8,5 +8,7 @@ public class ConstantsHelper
     public const string TAG_POINTSHANDLER = "PointsHandler";
     public const string TAG_GAME_OVER_UI = "GameOverUI";
 
+    public const string ENEMY_GUN = "EnemyGun";
+
     public const int MAX_PLAYER_HEALTH = 3;
 }

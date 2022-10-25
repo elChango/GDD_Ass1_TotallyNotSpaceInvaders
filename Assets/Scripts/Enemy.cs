@@ -7,13 +7,11 @@ public class Enemy : MonoBehaviour
     Rigidbody2D rb;
     private new SpriteRenderer renderer;
 
-    public float xSpeed;
-    public float ySpeed;
+    [SerializeField] public float xSpeed;
+    [SerializeField] public float ySpeed;
 
-    public float speed;
-    public float fireRate;
-    public int health;
-    public int points;
+    [SerializeField] public int health;
+    [SerializeField] public int points;
 
     // Start is called before the first frame update
     void Start()
@@ -48,13 +46,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void Die(bool updateScore)
+    public void Die(bool updateScore)
     {
         Destroy(gameObject);
 
         if(updateScore)
         {
-            GameObject obj = GameObject.FindWithTag("PointsHandler");
+            GameObject obj = GameObject.FindWithTag(ConstantsHelper.TAG_POINTSHANDLER);
             if (obj != null)
             {
                 PointsHandler pointsHandler = obj.GetComponent<PointsHandler>();
