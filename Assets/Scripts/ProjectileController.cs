@@ -7,7 +7,7 @@ public class ProjectileController : MonoBehaviour
     int dir = 1;
     public float speed = 4;
     Rigidbody2D rb;
-    private new SpriteRenderer renderer;
+    private SpriteRenderer renderer;
 
 
     void Awake()

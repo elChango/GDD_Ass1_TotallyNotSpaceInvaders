@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public const int MAX_HEALTH = 3;
     public GameObject projectile;
     GameObject shipGun;
     public float speed = 5.0f;
     Rigidbody2D rb;
     public int health { get; private set; }
 
-    public HealthBarController healthBar;
-
     // Start is called before the first frame update
     void Start()
     {
-         health = MAX_HEALTH;
+         health = ConstantsHelper.MAX_PLAYER_HEALTH;
     }
 
     void Awake()
@@ -41,9 +38,20 @@ public class PlayerController : MonoBehaviour
     public void Damage()
     {
         health--;
-        healthBar.UpdateHealthBar();
+
+        GameObject obj = GameObject.FindWithTag(ConstantsHelper.TAG_HEALTHBAR);
+        if (obj != null)
+        {
+            HealthBarController healthBar = obj.GetComponent<HealthBarController>();
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealthBar(health);
+            }
+        }
+        
         if(health==0)
         {
+            EndGame();
             Destroy(gameObject);
         }
     }
@@ -51,5 +59,14 @@ public class PlayerController : MonoBehaviour
     void Shoot()
     {
         Instantiate(projectile, shipGun.transform.position, Quaternion.identity);
+    }
+
+    private void EndGame()
+    {
+        //disable UI for the end of the game
+        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(ConstantsHelper.TAG_GAME_OVER_UI))
+        {
+            obj.SetActive(true);
+        }
     }
 }
