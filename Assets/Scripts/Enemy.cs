@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    Rigidbody2D rb;
-    private new SpriteRenderer renderer;
+    private Rigidbody2D rb;
+    private SpriteRenderer renderer;
 
     [SerializeField] public float xSpeed;
     [SerializeField] public float ySpeed;
@@ -70,6 +70,15 @@ public class Enemy : MonoBehaviour
     {
         health--;
         if (health == 0)
+        {
+            Die(true);
+        }
+    }
+
+    public void Damage(int damage)
+    {
+        health-=damage;
+        if (health <= 0)
         {
             Die(true);
         }

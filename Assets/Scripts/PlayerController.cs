@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject projectile;
+    [SerializeField] private GameObject homingMissile;
     GameObject shipGun;
     public float speed = 5.0f;
     Rigidbody2D rb;
@@ -25,13 +26,17 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
         rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speed, 0));
         rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * speed));
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Shoot();
+            ShootProjectile();
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        {
+            ShootMissile();
         }
     }
 
@@ -56,14 +61,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Shoot()
+    void ShootProjectile()
     {
         Instantiate(projectile, shipGun.transform.position, Quaternion.identity);
     }
 
+    void ShootMissile()
+    {
+        Instantiate(homingMissile, shipGun.transform.position, Quaternion.identity);
+    }
+
     private void EndGame()
     {
-        //disable UI for the end of the game
+        //enable UI at the end of the game
         foreach (GameObject obj in GameObject.FindGameObjectsWithTag(ConstantsHelper.TAG_GAME_OVER_UI))
         {
             obj.SetActive(true);

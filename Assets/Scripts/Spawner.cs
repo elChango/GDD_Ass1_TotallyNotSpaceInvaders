@@ -16,6 +16,6 @@ public class Spawner : MonoBehaviour
     void SpawnEnemy()
     {
         //TODO: update coordinates
-        Instantiate(enemies[(int)Random.Range(0, enemies.Length)], new Vector3(10.8f, Random.Range(-4.7f, 4.5f),0), Quaternion.identity);
+        Instantiate(enemies[Random.Range(0, enemies.Length)], new Vector3(10.8f, Random.Range(-4.7f, 4.5f),0), Quaternion.identity);
     }
 }
