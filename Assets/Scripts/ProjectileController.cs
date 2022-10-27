@@ -20,13 +20,13 @@ public class ProjectileController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        rb.velocity = new Vector2(speed*dir,0);
+        rb.velocity = new Vector2(speed * dir, 0);
         if (!renderer.isVisible)
         {
             Destroy(gameObject);
@@ -39,11 +39,17 @@ public class ProjectileController : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col)
-    {   
-        if(dir == 1) { 
-            if(col.gameObject.CompareTag("Enemy"))
+    {
+        if (dir == 1)
+        {
+            if (col.gameObject.CompareTag(ConstantsHelper.TAG_ENEMY))
             {
                 col.gameObject.GetComponent<Enemy>().Damage();
+                Destroy(gameObject);
+            }
+            else if (col.gameObject.CompareTag(ConstantsHelper.TAG_SHOOTING_ENEMY))
+            {
+                col.gameObject.GetComponent<ShootingEnemy>().Damage();
                 Destroy(gameObject);
             }
         }

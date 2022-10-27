@@ -195,6 +195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3905632295645150432, guid: 8db9e91251413f94aa9b1cfc3cd3bc85, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3905632295645150433, guid: 8db9e91251413f94aa9b1cfc3cd3bc85, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -329,6 +333,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3971527197577989064, guid: b1b58d536ec45a7499d9dd82c27e2444, type: 3}
+      propertyPath: prewarm
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3971527197577989066, guid: b1b58d536ec45a7499d9dd82c27e2444, type: 3}
       propertyPath: m_Name
       value: Particle System Space

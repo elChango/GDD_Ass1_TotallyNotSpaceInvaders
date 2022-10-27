@@ -19,5 +19,6 @@ public class PointsHandler : MonoBehaviour
     {
         score += points;
         textComponent.SetText(string.Format("Score - {0:D6}", score));
+        PlayerPrefs.SetInt(ConstantsHelper.KEY_SCORE, score);
     }
 }

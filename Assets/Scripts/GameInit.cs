@@ -13,12 +13,6 @@ public class GameInit : MonoBehaviour
         Debug.Log("got ship type: " + shipType);
         Instantiate(players[shipType], transform.position, Quaternion.identity);
 
-        //disable UI for the end of the game
-        foreach(GameObject obj in GameObject.FindGameObjectsWithTag(ConstantsHelper.TAG_GAME_OVER_UI))
-        {
-            obj.SetActive(false);
-        }
-
         Destroy(gameObject);
     }
 }

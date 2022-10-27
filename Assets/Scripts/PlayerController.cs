@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -73,10 +75,6 @@ public class PlayerController : MonoBehaviour
 
     private void EndGame()
     {
-        //enable UI at the end of the game
-        foreach (GameObject obj in GameObject.FindGameObjectsWithTag(ConstantsHelper.TAG_GAME_OVER_UI))
-        {
-            obj.SetActive(true);
-        }
+        SceneManager.LoadScene(ConstantsHelper.SCENE_GAME_OVER);
     }
 }

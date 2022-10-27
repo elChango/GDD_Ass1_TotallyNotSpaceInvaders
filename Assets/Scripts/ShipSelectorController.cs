@@ -11,12 +11,12 @@ public class ShipSelectorController : MonoBehaviour
     public void SelectShip0()
     {
         PlayerPrefs.SetInt(SHIP_TYPE, 0);
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene(ConstantsHelper.SCENE_LEVEL_ONE);
     }
 
     public void SelectShip1()
     {
         PlayerPrefs.SetInt(SHIP_TYPE, 1);
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene(ConstantsHelper.SCENE_LEVEL_ONE);
     }
 }

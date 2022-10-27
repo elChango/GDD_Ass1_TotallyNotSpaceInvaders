@@ -7,6 +7,6 @@ public class GameLoader : MonoBehaviour
 {
     public void LoadGame()
     {
-        SceneManager.LoadScene("ShipSelection");
+        SceneManager.LoadScene(ConstantsHelper.SCENE_SHIP_SELECTION);
     }
 }
