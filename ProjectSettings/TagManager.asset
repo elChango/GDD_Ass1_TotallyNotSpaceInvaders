@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - PointsHandler
+  - GameOverUI
+  - Healthbar
+  - ShootingEnemy
   layers:
   - Default
   - TransparentFX
