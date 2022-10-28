@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
             ShootProjectile();
         }
 
-        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && fireDelay > 3)
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && fireDelay > 2)
         {
             ShootMissile();
             fireDelay = 0;

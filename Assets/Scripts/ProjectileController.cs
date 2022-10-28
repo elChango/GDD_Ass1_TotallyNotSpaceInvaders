@@ -5,7 +5,8 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour
 {
     int dir = 1;
-    public float speed = 4;
+    [SerializeField] private float speed = 4;
+    [SerializeField] private int damage = 1;
     Rigidbody2D rb;
 
 
@@ -42,12 +43,12 @@ public class ProjectileController : MonoBehaviour
         {
             if (col.gameObject.CompareTag(ConstantsHelper.TAG_ENEMY))
             {
-                col.gameObject.GetComponent<Enemy>().Damage();
+                col.gameObject.GetComponent<Enemy>().Damage(damage);
                 Destroy(gameObject);
             }
             else if (col.gameObject.CompareTag(ConstantsHelper.TAG_SHOOTING_ENEMY))
             {
-                col.gameObject.GetComponent<ShootingEnemy>().Damage();
+                col.gameObject.GetComponent<ShootingEnemy>().Damage(damage);
                 Destroy(gameObject);
             }
         }

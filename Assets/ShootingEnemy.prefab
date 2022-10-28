@@ -292,7 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSpeed: 3
   ySpeed: 0
-  health: 4
+  health: 3
   points: 7
   fireRate: 300
   projectile: {fileID: 6492573857541826974, guid: 61d64c4119c184c8cb975bffd22c856e, type: 3}
