@@ -53,7 +53,7 @@ public class HomingMissle : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("got collison with " + col);
+        //Debug.Log("got collison with " + col);
         if (col.gameObject.CompareTag(ConstantsHelper.TAG_ENEMY))
         {
             col.gameObject.GetComponent<Enemy>().Damage(5);

@@ -9,14 +9,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject projectile;
     [SerializeField] private GameObject homingMissile;
     GameObject shipGun;
-    public float speed = 5.0f;
+    [SerializeField] private float speed = 5.0f;
     Rigidbody2D rb;
     public int health { get; private set; }
+    private float fireDelay;
 
     // Start is called before the first frame update
     void Start()
     {
-         health = ConstantsHelper.MAX_PLAYER_HEALTH;
+        health = ConstantsHelper.MAX_PLAYER_HEALTH;
+        fireDelay = 5;
     }
 
     void Awake()
@@ -28,17 +30,18 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rb.AddForce(new Vector2(Input.GetAxis("Horizontal") * speed, 0));
-        rb.AddForce(new Vector2(0, Input.GetAxis("Vertical") * speed));
+        fireDelay += Time.deltaTime;
+        rb.velocity = new Vector2(Input.GetAxis("Horizontal") * speed, Input.GetAxis("Vertical") * speed);
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
             ShootProjectile();
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && fireDelay > 3)
         {
             ShootMissile();
+            fireDelay = 0;
         }
     }
 

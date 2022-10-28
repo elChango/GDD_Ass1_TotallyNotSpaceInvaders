@@ -5,7 +5,6 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private SpriteRenderer renderer;
 
     [SerializeField] public float xSpeed;
     [SerializeField] public float ySpeed;
@@ -22,7 +21,6 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -30,7 +28,7 @@ public class Enemy : MonoBehaviour
     {
         rb.velocity = new Vector2(-xSpeed, -ySpeed);
 
-        if(!renderer.isVisible)
+        if(!GetComponent<Renderer>().isVisible)
         {
             Die(false);
         }

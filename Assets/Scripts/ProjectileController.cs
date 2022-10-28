@@ -7,13 +7,11 @@ public class ProjectileController : MonoBehaviour
     int dir = 1;
     public float speed = 4;
     Rigidbody2D rb;
-    private SpriteRenderer renderer;
 
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<SpriteRenderer>();
     }
 
 
@@ -27,7 +25,7 @@ public class ProjectileController : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(speed * dir, 0);
-        if (!renderer.isVisible)
+        if (!GetComponent<Renderer>().isVisible)
         {
             Destroy(gameObject);
         }

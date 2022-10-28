@@ -7,7 +7,6 @@ public class ShootingEnemy : MonoBehaviour
     private GameObject gun;
 
     private Rigidbody2D rb;
-    private SpriteRenderer renderer;
 
     [SerializeField] public float xSpeed;
     [SerializeField] public float ySpeed;
@@ -16,18 +15,17 @@ public class ShootingEnemy : MonoBehaviour
     [SerializeField] public int points;
     [SerializeField] private int fireRate;
     [SerializeField] private GameObject projectile;
-    private int fireDelay;
+    private float fireDelay;
 
     // Start is called before the first frame update
     void Start()
     {
-        fireDelay = fireRate;
+        fireDelay = 3;
     }
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        renderer = GetComponent<SpriteRenderer>();
         gun = transform.Find(ConstantsHelper.ENEMY_GUN).gameObject;
 
     }
@@ -36,20 +34,19 @@ public class ShootingEnemy : MonoBehaviour
     void Update()
     {
         rb.velocity = new Vector2(-xSpeed, -ySpeed);
+        fireDelay += Time.deltaTime;
 
-        if(!renderer.isVisible)
+
+        if (!GetComponent<Renderer>().isVisible)
         {
             Die(false);
         }
 
-        if(fireRate > 0 && fireDelay == 0) 
+        if(fireDelay > 1.5f) 
         {
             Shoot();
-            fireDelay = fireRate;
-        } else if (fireRate > 0)
-        {
-            fireDelay--;
-        }
+            fireDelay = 0;
+        } 
     }
 
     void Shoot()

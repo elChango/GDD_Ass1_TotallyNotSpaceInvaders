@@ -13,6 +13,7 @@ public class GameInit : MonoBehaviour
         Debug.Log("got ship type: " + shipType);
         Instantiate(players[shipType], transform.position, Quaternion.identity);
 
+        PlayerPrefs.SetInt(ConstantsHelper.KEY_SCORE, 0);
         Destroy(gameObject);
     }
 }
